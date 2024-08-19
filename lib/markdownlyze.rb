@@ -10,13 +10,19 @@ require_relative 'markdownlyze/elements/h4'
 require_relative 'markdownlyze/elements/image'
 require_relative 'markdownlyze/elements/blank_line'
 require_relative 'markdownlyze/elements/paragraph'
+require_relative 'markdownlyze/elements/code_block'
 
 module Markdownlyze
   class << self
     def parse(content)
       markdown_lines = content.to_s.split("\n")
+      skip_until = nil
 
       markdown_lines.map.with_index do |line, index|
+        unless skip_until.nil?
+          next if index < skip_until
+        end
+
         element_name = ::Markdownlyze::ElementNameMatcher.call(line)
         element_class = ::Markdownlyze::Elements.const_get(element_name.to_s.split('_').map(&:capitalize).join)
         element = element_class.new(
@@ -24,6 +30,8 @@ module Markdownlyze
           index: index,
           lines: markdown_lines
         )
+
+        skip_until = element.skip_until
 
         { element: element_name, value: element.value }
       end
