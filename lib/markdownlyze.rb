@@ -18,7 +18,7 @@ module Markdownlyze
       markdown_lines = content.to_s.split("\n")
       skip_until = nil
 
-      markdown_lines.map.with_index do |line, index|
+      elements = markdown_lines.map.with_index do |line, index|
         unless skip_until.nil?
           next if index < skip_until
         end
@@ -31,10 +31,12 @@ module Markdownlyze
           lines: markdown_lines
         )
 
-        skip_until = element.skip_until
-
-        { element: element_name, value: element.value }
+        { element: element_name, value: element.value }.merge(element.options).tap do
+          skip_until = element.skip_until
+        end
       end
+
+      elements.compact
     end
 
     def parse_file(file_path)

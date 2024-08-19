@@ -22,6 +22,8 @@ describe Markdownlyze do
         { element: :blank_line, value: nil },
         { element: :paragraph, value: 'This is a fourth paragraph.' },
         { element: :blank_line, value: nil },
+        { element: :code_block, value: "def hello\n  :hello\nend", language: 'ruby' },
+        { element: :blank_line, value: nil },
         { element: :image, value: './images/image.png' }
       ])
     end
@@ -46,6 +48,12 @@ describe Markdownlyze do
 
         This is a fourth paragraph.
 
+        ```ruby
+        def hello
+          :hello
+        end
+        ```
+
         ![image](./images/image.png)
       MARKDOWN
 
@@ -65,6 +73,8 @@ describe Markdownlyze do
         { element: :h4, value: 'Fourth header' },
         { element: :blank_line, value: nil },
         { element: :paragraph, value: 'This is a fourth paragraph.' },
+        { element: :blank_line, value: nil },
+        { element: :code_block, value: "def hello\n  :hello\nend", language: 'ruby' },
         { element: :blank_line, value: nil },
         { element: :image, value: './images/image.png' }
       ])

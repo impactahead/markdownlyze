@@ -14,4 +14,10 @@ This is a third paragraph.
 
 This is a fourth paragraph.
 
+```ruby
+def hello
+  :hello
+end
+```
+
 ![image](./images/image.png)
