@@ -1,6 +1,6 @@
 module Markdownlyze
   module Elements
-    class H1 < Base
+    class H1 < ::Markdownlyze::Elements::Base
       def value
         @line.gsub(/^# /, '')
       end
