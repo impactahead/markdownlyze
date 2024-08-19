@@ -7,6 +7,7 @@ require_relative 'markdownlyze/elements/h1'
 require_relative 'markdownlyze/elements/h2'
 require_relative 'markdownlyze/elements/h3'
 require_relative 'markdownlyze/elements/h4'
+require_relative 'markdownlyze/elements/image'
 
 module Markdownlyze
   class << self
