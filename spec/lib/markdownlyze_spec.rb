@@ -21,6 +21,8 @@ describe Markdownlyze do
         { element: :h4, value: 'Fourth header' },
         { element: :blank_line, value: nil },
         { element: :paragraph, value: 'This is a fourth paragraph.' },
+        { element: :blank_line, value: nil },
+        { element: :image, value: './images/image.png' }
       ])
     end
   end
@@ -43,6 +45,8 @@ describe Markdownlyze do
         #### Fourth header
 
         This is a fourth paragraph.
+
+        ![image](./images/image.png)
       MARKDOWN
 
       expect(Markdownlyze.parse(markdown)).to eq([
@@ -61,6 +65,8 @@ describe Markdownlyze do
         { element: :h4, value: 'Fourth header' },
         { element: :blank_line, value: nil },
         { element: :paragraph, value: 'This is a fourth paragraph.' },
+        { element: :blank_line, value: nil },
+        { element: :image, value: './images/image.png' }
       ])
     end
   end

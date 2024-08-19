@@ -13,3 +13,5 @@ This is a third paragraph.
 #### Fourth header
 
 This is a fourth paragraph.
+
+![image](./images/image.png)
