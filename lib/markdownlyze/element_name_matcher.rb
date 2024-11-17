@@ -7,6 +7,7 @@ module Markdownlyze
       /^#### .*/ => :h4,
       /\!\[.*\]\(\.\/images\/.*\)/ => :image,
       /```[a-z]*/ => :code_block,
+      /^\> .*/ => :quote,
       [/^1\. .*/, lambda { |next_line| next_line.to_s.match?(/^2\. .*/) }] => :ol,
       [/^(\*|\-) .*/, lambda { |next_line| next_line.to_s.match?(/^(\*|\-) .*/) }] => :ul,
       [/^|.* \| .*$/, lambda { |next_line| next_line.to_s.count('|') > 1 }] => :table
