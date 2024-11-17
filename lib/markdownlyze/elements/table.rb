@@ -13,7 +13,7 @@ module Markdownlyze
         headers = table_lines.shift
         table_lines.shift
         raw_table = [headers] | table_lines
-        rows = raw_table.map { |row| row.split("|").map(&:strip)[1..-1] }
+        rows = raw_table.map { |row| row.split("|").map(&:strip)[1..-1].map { |value| to_html(value) } }
 
         if @skip_until.to_i.zero?
           @skip_until = @index + rows.size + 1

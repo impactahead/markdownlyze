@@ -70,13 +70,13 @@ describe Markdownlyze do
 
         Here comes the unordered list:
 
-        * First item
+        * First **item**
         * Second item
         * Third item
 
         Here comes the quote:
 
-        > First item
+        > First [item](https://example.com)
         > Second item
         > Third item
       MARKDOWN
@@ -112,11 +112,11 @@ describe Markdownlyze do
         { element: :blank_line, value: nil },
         { element: :paragraph, value: 'Here comes the unordered list:' },
         { element: :blank_line, value: nil },
-        { element: :ul, value: ['First item', 'Second item', 'Third item'] },
+        { element: :ul, value: ['First <strong>item</strong>', 'Second item', 'Third item'] },
         { element: :blank_line, value: nil },
         { element: :paragraph, value: 'Here comes the quote:' },
         { element: :blank_line, value: nil },
-        { element: :quote, value: ['First item', 'Second item', 'Third item'] }
+        { element: :quote, value: ["First <a href=\"https://example.com\">item</a>", 'Second item', 'Third item'] }
       ])
     end
   end

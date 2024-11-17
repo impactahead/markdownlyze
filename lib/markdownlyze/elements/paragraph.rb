@@ -1,7 +1,7 @@
 module Markdownlyze
   module Elements
     class Paragraph < ::Markdownlyze::Elements::Base
-      def value = @line
+      def value = to_html(@line)
     end
   end
 end

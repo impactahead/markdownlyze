@@ -11,7 +11,7 @@ module Markdownlyze
 
         @skip_until = @lines.size if @skip_until.nil?
 
-        @lines[@index..(@skip_until - 1)].map { |line| line.gsub(/^\d+\. /, '') }
+        @lines[@index..(@skip_until - 1)].map { |line| to_html(line.gsub(/^\d+\. /, '')) }
       end
     end
   end
