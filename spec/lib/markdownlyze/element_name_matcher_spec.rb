@@ -136,5 +136,14 @@ RSpec.describe Markdownlyze::ElementNameMatcher do
         )
       ).to eq(:ul)
     end
+
+    it 'returns quote for quote' do
+      expect(
+        described_class.call(
+          current_line: '> First item',
+          next_line: nil
+        )
+      ).to eq(:quote)
+    end
   end
 end
