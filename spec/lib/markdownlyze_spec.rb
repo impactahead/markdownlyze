@@ -55,6 +55,12 @@ describe Markdownlyze do
         ```
 
         ![image](./images/image.png)
+
+        Here comes the table:
+
+        | Column 1 | Column 2 | Column 3 |
+        | -------- | -------- | -------- |
+        | Value 1  | Value 2  | Value 3  |
       MARKDOWN
 
       expect(Markdownlyze.parse(markdown)).to eq([
@@ -76,7 +82,11 @@ describe Markdownlyze do
         { element: :blank_line, value: nil },
         { element: :code_block, value: "def hello\n  :hello\nend", language: 'ruby' },
         { element: :blank_line, value: nil },
-        { element: :image, value: './images/image.png' }
+        { element: :image, value: './images/image.png' },
+        { element: :blank_line, value: nil },
+        { element: :paragraph, value: 'Here comes the table:' },
+        { element: :blank_line, value: nil },
+        { element: :table, value: [['Column 1', 'Column 2', 'Column 3'], ['Value 1', 'Value 2', 'Value 3']] }
       ])
     end
   end

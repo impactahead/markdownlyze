@@ -11,6 +11,7 @@ require_relative 'markdownlyze/elements/image'
 require_relative 'markdownlyze/elements/blank_line'
 require_relative 'markdownlyze/elements/paragraph'
 require_relative 'markdownlyze/elements/code_block'
+require_relative 'markdownlyze/elements/table'
 
 module Markdownlyze
   class << self
@@ -23,7 +24,11 @@ module Markdownlyze
           next if index < skip_until
         end
 
-        element_name = ::Markdownlyze::ElementNameMatcher.call(line)
+        element_name = ::Markdownlyze::ElementNameMatcher.call(
+          current_line: line,
+          next_line: markdown_lines[index + 1]
+        )
+
         element_class = ::Markdownlyze::Elements.const_get(element_name.to_s.split('_').map(&:capitalize).join)
         element = element_class.new(
           line: line,
