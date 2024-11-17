@@ -118,5 +118,23 @@ RSpec.describe Markdownlyze::ElementNameMatcher do
         )
       ).to eq(:paragraph)
     end
+
+    it 'returns unordered list for unordered list with * as bullet' do
+      expect(
+        described_class.call(
+          current_line: '* First item',
+          next_line: '* Second item'
+        )
+      ).to eq(:ul)
+    end
+
+    it 'returns unordered list for unordered list with - as bullet' do
+      expect(
+        described_class.call(
+          current_line: '- First item',
+          next_line: '- Second item'
+        )
+      ).to eq(:ul)
+    end
   end
 end

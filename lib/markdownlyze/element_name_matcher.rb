@@ -8,6 +8,7 @@ module Markdownlyze
       /\!\[.*\]\(\.\/images\/.*\)/ => :image,
       /```[a-z]*/ => :code_block,
       [/^1\. .*/, lambda { |next_line| next_line.to_s.match?(/^2\. .*/) }] => :ol,
+      [/^(\*|\-) .*/, lambda { |next_line| next_line.to_s.match?(/^(\*|\-) .*/) }] => :ul,
       [/^|.* \| .*$/, lambda { |next_line| next_line.to_s.count('|') > 1 }] => :table
     }.freeze
 

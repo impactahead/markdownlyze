@@ -67,6 +67,12 @@ describe Markdownlyze do
         1. First item
         2. Second item
         3. Third item
+
+        Here comes the unordered list:
+
+        * First item
+        * Second item
+        * Third item
       MARKDOWN
 
       expect(Markdownlyze.parse(markdown)).to eq([
@@ -96,7 +102,11 @@ describe Markdownlyze do
         { element: :blank_line, value: nil },
         { element: :paragraph, value: 'Here comes the ordered list:' },
         { element: :blank_line, value: nil },
-        { element: :ol, value: ['First item', 'Second item', 'Third item'] }
+        { element: :ol, value: ['First item', 'Second item', 'Third item'] },
+        { element: :blank_line, value: nil },
+        { element: :paragraph, value: 'Here comes the unordered list:' },
+        { element: :blank_line, value: nil },
+        { element: :ul, value: ['First item', 'Second item', 'Third item'] }
       ])
     end
   end
