@@ -12,6 +12,7 @@ require_relative 'markdownlyze/elements/blank_line'
 require_relative 'markdownlyze/elements/paragraph'
 require_relative 'markdownlyze/elements/code_block'
 require_relative 'markdownlyze/elements/table'
+require_relative 'markdownlyze/elements/ol'
 
 module Markdownlyze
   class << self

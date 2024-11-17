@@ -92,6 +92,24 @@ RSpec.describe Markdownlyze::ElementNameMatcher do
       ).to eq(:table)
     end
 
+    it 'returns ordered list for ordered list' do
+      expect(
+        described_class.call(
+          current_line: '1. First item',
+          next_line: '2. Second item'
+        )
+      ).to eq(:ol)
+    end
+
+    it 'returns paragraph for incomplete ordered list' do
+      expect(
+        described_class.call(
+          current_line: '1. First item',
+          next_line: 'And some other story'
+        )
+      ).to eq(:paragraph)
+    end
+
     it 'returns paragraph for incomplete table' do
       expect(
         described_class.call(

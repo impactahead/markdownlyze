@@ -61,6 +61,12 @@ describe Markdownlyze do
         | Column 1 | Column 2 | Column 3 |
         | -------- | -------- | -------- |
         | Value 1  | Value 2  | Value 3  |
+
+        Here comes the ordered list:
+
+        1. First item
+        2. Second item
+        3. Third item
       MARKDOWN
 
       expect(Markdownlyze.parse(markdown)).to eq([
@@ -86,7 +92,11 @@ describe Markdownlyze do
         { element: :blank_line, value: nil },
         { element: :paragraph, value: 'Here comes the table:' },
         { element: :blank_line, value: nil },
-        { element: :table, value: [['Column 1', 'Column 2', 'Column 3'], ['Value 1', 'Value 2', 'Value 3']] }
+        { element: :table, value: [['Column 1', 'Column 2', 'Column 3'], ['Value 1', 'Value 2', 'Value 3']] },
+        { element: :blank_line, value: nil },
+        { element: :paragraph, value: 'Here comes the ordered list:' },
+        { element: :blank_line, value: nil },
+        { element: :ol, value: ['First item', 'Second item', 'Third item'] }
       ])
     end
   end
