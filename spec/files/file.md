@@ -21,3 +21,7 @@ end
 ```
 
 ![image](./images/image.png)
+
+Another image:
+
+![image](https://example.com/image.png)

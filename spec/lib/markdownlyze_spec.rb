@@ -24,7 +24,11 @@ describe Markdownlyze do
         { element: :blank_line, value: nil },
         { element: :code_block, value: "def hello\n  :hello\nend", language: 'ruby' },
         { element: :blank_line, value: nil },
-        { element: :image, value: './images/image.png' }
+        { element: :image, value: './images/image.png' },
+        { element: :blank_line, value: nil },
+        { element: :paragraph, value: "Another image:" },
+        { element: :blank_line, value: nil },
+        { element: :remote_image, value: "https://example.com/image.png" }
       ])
     end
   end

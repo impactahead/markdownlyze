@@ -6,6 +6,7 @@ module Markdownlyze
       /^### .*/ => :h3,
       /^#### .*/ => :h4,
       /\!\[.*\]\(\.\/images\/.*\)/ => :image,
+      /\!\[.*\]\(http.*\)/ => :remote_image,
       /```[a-z]*/ => :code_block,
       /^\> .*/ => :quote,
       [/^1\. .*/, lambda { |next_line| next_line.to_s.match?(/^2\. .*/) }] => :ol,
