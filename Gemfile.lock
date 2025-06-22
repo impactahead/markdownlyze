@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    markdownlyze (0.0.2)
+    markdownlyze (0.0.3)
       redcarpet (= 3.6.0)
 
 GEM

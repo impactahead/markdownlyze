@@ -5,7 +5,7 @@ module Markdownlyze
       /^## .*/ => :h2,
       /^### .*/ => :h3,
       /^#### .*/ => :h4,
-      /\!\[.*\]\(\.\/images\/.*\)/ => :image,
+      /\!\[.*\]\(\.\/.*\.(png|jpg|jpeg|gif|svg|webp)\)$/ => :image,
       /\!\[.*\]\(http.*\)/ => :remote_image,
       /```[a-z]*/ => :code_block,
       /^\> .*/ => :quote,
